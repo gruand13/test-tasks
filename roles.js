@@ -39,8 +39,27 @@ const text = `
 Лука Лукич. Не приведи Бог служить по ученой части! Всего боишься: всякий мешается, всякому хочется показать, что он тоже умный человек.
 Городничий. Это бы еще ничего, — инкогнито проклятое! Вдруг заглянет: «А, вы здесь, голубчики! А кто, скажет, здесь судья?» — «Ляпкин-Тяпкин». — «А подать сюда Ляпкина-Тяпкина! А кто попечитель богоугодных заведений?» — «Земляника». — «А подать сюда Землянику!» Вот что худо!`;
 
-
+// разделяем текст на строки
 const phrases = text.split('\n');
-console.log(phrases);
+// console.log(phrases);
 
-let temp= [];
+let result ='';
+
+roles.forEach(role=>{
+    let temp = `\n${role}: \n`;
+
+    phrases.forEach((phrase, i) =>{
+        if (phrase.indexOf(role)>=0 && phrase.indexOf(role)< role.length){
+            const content = phrase.slice(role.length+1)
+        temp += `${i+1}) ${content}\n`;
+        }
+    });
+
+    result += temp;
+
+});
+
+
+
+
+console.log(result);
